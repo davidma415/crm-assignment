@@ -2,8 +2,8 @@ require_relative 'contact'
 
 class CRM
 
-  def initialize
-
+  def initialize(name)
+    @name = name
   end
 
   def main_menu
@@ -49,6 +49,8 @@ class CRM
     note = gets.chomp.downcase
 
     Contact.create(first_name, last_name, email, note)
+
+    puts "\e[H\e[2J"
   end
 
   def modify_existing_contact
@@ -63,19 +65,40 @@ class CRM
 
     contact = Contact.find_by('first_name', name)
     contact.update(attribute, value)
+
+    puts "\e[H\e[2J"
+
+    p contact
   end
 
   def delete_contact
-    
+    print "Please enter the first name of the contact you would like to delete: "
+    name = gets.chomp.downcase
+    contact = Contact.find_by('first_name', name)
+    contact.delete
+
+    puts "\e[H\e[2J"
+
   end
 
   def display_all_contacts
-
+    puts "\e[H\e[2J"
+    p Contact.all
   end
 
   def search_by_attribute
+    print "Enter the attribute that you would like to search by: "
+    attribute = gets.chomp.downcase
 
+    print "Enter the value of the selected attribute: "
+    value = gets.chomp.downcase
+
+    contact = Contact.find_by(attribute, value)
+    puts "\e[H\e[2J"
+    p contact
   end
 
-
 end
+
+crm1 = CRM.new('this is my first crm')
+crm1.main_menu

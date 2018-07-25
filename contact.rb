@@ -105,12 +105,3 @@ class Contact
   # Feel free to add other methods here, if you need them.
 
 end
-
-cont1 = Contact.create('Rob', 'Chan', 'test@gmail.com','this is a note')
-cont2 = Contact.create('Will', 'Ray', 'test@gmail.com','this is a note')
-cont3 = Contact.create('Darren', 'George', 'test@gmail.com','this is a note')
-cont4 = Contact.create('Pao', 'Durant', 'test@gmail.com','this is a note')
-
-p Contact.all
-Contact.delete_all
-p Contact.all
