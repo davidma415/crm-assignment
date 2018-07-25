@@ -1,3 +1,5 @@
+require_relative 'contact'
+
 class CRM
 
   def initialize
@@ -34,15 +36,37 @@ class CRM
   end
 
   def add_new_contact
+    print 'Enter the first name: '
+    first_name = gets.chomp.downcase
 
+    print 'Enter the last name: '
+    last_name = gets.chomp.downcase
+
+    print 'Enter email address: '
+    email = gets.chomp.downcase
+
+    print 'Enter a note: '
+    note = gets.chomp.downcase
+
+    Contact.create(first_name, last_name, email, note)
   end
 
   def modify_existing_contact
+    print 'Enter the first name of the contact you would like to update: '
+    name = gets.chomp.downcase
 
+    print 'Please enter what you would like to change: '
+    attribute = gets.chomp.downcase
+
+    print 'Please enter the new value: '
+    value = gets.chomp.downcase
+
+    contact = Contact.find_by('first_name', name)
+    contact.update(attribute, value)
   end
 
   def delete_contact
-
+    
   end
 
   def display_all_contacts
