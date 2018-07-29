@@ -55,6 +55,7 @@ class CRM
       note:       note
     )
 
+    contact.save
     puts "\e[H\e[2J"
   end
 
@@ -68,8 +69,8 @@ class CRM
     print 'Please enter the new value: '
     value = gets.chomp.downcase
 
-    contact = Contact.find_by('first_name', name)
-    contact.update(attribute, value)
+    contact = Contact.find_by('first_name' => name)
+    contact.update(attribute => value)
 
     puts "\e[H\e[2J"
 
@@ -79,7 +80,7 @@ class CRM
   def delete_contact
     print "Please enter the first name of the contact you would like to delete: "
     name = gets.chomp.downcase
-    contact = Contact.find_by('first_name', name)
+    contact = Contact.find_by('first_name' => name)
     contact.delete
 
     puts "\e[H\e[2J"
@@ -98,7 +99,7 @@ class CRM
     print "Enter the value of the selected attribute: "
     value = gets.chomp.downcase
 
-    contact = Contact.find_by(attribute, value)
+    contact = Contact.find_by(attribute => value)
     puts "\e[H\e[2J"
     p contact
   end
