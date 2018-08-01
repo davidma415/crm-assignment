@@ -80,8 +80,8 @@ class CRM
   def delete_contact
     print "Please enter the first name of the contact you would like to delete: "
     name = gets.chomp.downcase
-    contact = Contact.find_by('first_name' => name)
-    contact.delete
+    contact_delete = Contact.find_by('first_name' => name)
+    Contact.delete(contact_delete)
 
     puts "\e[H\e[2J"
 
